@@ -34,8 +34,5 @@ jobs:
           npm run lint
           npm run format
 
-      - name: Tests
-        run: npm run test
-
       - name: Builds
         run: npm run build
