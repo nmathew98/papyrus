@@ -1,3 +1,5 @@
+import { readFile } from "fs/promises";
+
 export interface Papyrus {
 	/**
 	 * Render a PDF document
@@ -58,7 +60,8 @@ export interface TemplatingEngine {
 }
 
 export interface PapyrusConfiguration {
-	template: string;
+	template?: string;
+	path?: string;
 	outputOptions: Record<string, any>;
 }
 
@@ -76,13 +79,29 @@ export default function buildMakePapyrus({
 	return function makePapyrus(configuration: PapyrusConfiguration): Papyrus {
 		return Object.freeze({
 			print: async (data: Record<string, any>, transform?: DataTransformer) => {
+				if (!configuration.template && !configuration.path)
+					throw new Error(
+						"Either a template or the path to a template must be provided",
+					);
+
+				let template: string | undefined;
+
+				if (configuration.template) template = configuration.template;
+				else if (configuration.path) {
+					const buffer = await readFile(configuration.path);
+
+					template = buffer.toString();
+				}
+
+				if (!template) throw new Error("Unable to load template");
+
 				await Browser.initialise();
 
 				let templateData: Record<string, any> = data;
 				if (transform !== undefined) templateData = transform(templateData);
 
 				const html: string = await TemplatingEngine.compile(
-					configuration.template,
+					template,
 					templateData,
 				);
 
