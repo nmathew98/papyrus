@@ -14,7 +14,7 @@ const Puppeteer: Browser = Object.freeze({
 		});
 		page = await browser.newPage();
 	},
-	display: async (content: string) => {
+	display: async content => {
 		if (page !== undefined) await page.setContent(content);
 	},
 	print: async (configuration, hook) => {

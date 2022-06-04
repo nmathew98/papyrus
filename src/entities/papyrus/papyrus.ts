@@ -68,10 +68,10 @@ type PrintHook = (
 ) => Promise<void>;
 
 export interface PapyrusConfiguration {
+	outputOptions: Record<string, any>;
 	template?: string;
 	path?: string;
-	outputOptions: Record<string, any>;
-	printHook: PrintHook;
+	printHook?: PrintHook;
 }
 
 export interface Browser {
