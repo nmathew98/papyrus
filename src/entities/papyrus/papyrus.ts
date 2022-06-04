@@ -7,7 +7,9 @@ export default function buildMakePapyrus({
 	Browser: Browser;
 	TemplatingEngine: TemplatingEngine;
 }) {
-	return function makePapyrus(configuration: PapyrusConfiguration): Papyrus {
+	return function makePapyrus<T = any>(
+		configuration: PapyrusConfiguration<T>,
+	): Papyrus {
 		return Object.freeze({
 			print: async (data: Record<string, any>, transform?: DataTransformer) => {
 				if (!configuration.template && !configuration.path)
@@ -62,16 +64,16 @@ export interface Papyrus {
 	) => Promise<void>;
 }
 
-type PrintHook = (
-	page: BrowserPage,
+type PrintHook<T = any> = (
+	page: BrowserPage & T,
 	configuration: Record<string, any>,
 ) => Promise<void>;
 
-export interface PapyrusConfiguration {
+export interface PapyrusConfiguration<T> {
 	outputOptions: Record<string, any>;
 	template?: string;
 	path?: string;
-	printHook?: PrintHook;
+	printHook?: PrintHook<T>;
 }
 
 export interface Browser {
