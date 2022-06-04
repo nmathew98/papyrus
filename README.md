@@ -1,12 +1,18 @@
 ![Tests](https://github.com/nmathew98/papyrus/actions/workflows/main.yml/badge.svg)
 
-# About
+## About
 
 A lightweight PDF renderer for Node.
 
 Uses [Pug](https://github.com/pugjs/pug) and [Puppeteer](https://github.com/puppeteer/puppeteer) to render PDFs.
 
-# Usage
+## Features
+
+- Compile HTML templates using Pug or bring your own templating engine ✅
+- Render PDFs using Puppeteer or use a headless browser of your liking ✅
+- Hookable PDF generation step ✅
+
+## Usage (with the defaults of Pug and Puppeteer)
 
 1. **Install Papyrus**
 

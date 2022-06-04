@@ -17,8 +17,11 @@ const Puppeteer: Browser = Object.freeze({
 	display: async (content: string) => {
 		if (page !== undefined) await page.setContent(content);
 	},
-	print: async (configuration: Record<string, any>) => {
-		if (page !== undefined) await page.pdf(configuration);
+	print: async (configuration, hook) => {
+		if (page !== undefined) {
+			if (!hook) await page.pdf(configuration);
+			else await hook(page, configuration);
+		}
 	},
 	close: async () => {
 		if (browser !== undefined) await browser.close();

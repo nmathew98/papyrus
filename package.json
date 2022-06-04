@@ -1,6 +1,6 @@
 {
 	"name": "@skulpture/papyrus",
-	"version": "0.0.7",
+	"version": "0.1.0",
 	"description": "A lightweight PDF renderer for Node",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -21,19 +21,19 @@
 	"author": "Naveen Mathew",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/jest": "^27.5.0",
-		"@types/node": "^17.0.31",
+		"@types/jest": "^28.1.0",
+		"@types/node": "^17.0.39",
 		"@types/pug": "^2.0.6",
-		"@typescript-eslint/eslint-plugin": "^5.22.0",
-		"@typescript-eslint/parser": "^5.22.0",
+		"@typescript-eslint/eslint-plugin": "^5.27.0",
+		"@typescript-eslint/parser": "^5.27.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"jest": "^28.1.0",
 		"prettier": "^2.6.2",
-		"ts-jest": "^28.0.2"
+		"ts-jest": "^28.0.4"
 	},
 	"dependencies": {
 		"pug": "^3.0.2",
-		"puppeteer": "^13.7.0"
+		"puppeteer": "^14.2.1"
 	}
 }
